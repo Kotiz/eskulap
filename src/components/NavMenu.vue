@@ -8,7 +8,7 @@
                         d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                 </svg>
             </a>
-    
+
             <button @click="open = !open" class="md:hidden">
                 <span v-show="!open">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -16,7 +16,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </span>
-    
+
                 <span v-show="open">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -25,19 +25,19 @@
                     </svg>
                 </span>
             </button>
-    
+
             <div :class="[open ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
                 class="absolute inset-x-0 z-30 w-full px-6 py-8 mt-4 space-y-6 transition-all duration-300 ease-in-out bg-indigo-600 top-16 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:space-y-0 md:-mx-6 md:flex md:items-center">
-                <a href="#" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300">Home</a>
-                <AppLink class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300" :to="'../views/Gabinety'">Click Me</AppLink>
-                <a href="#" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> About
-                </a>
-                <a href="#" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Portfolio
-                </a>
-                <a href="#" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Blogs
-                </a>
-                <a href="#" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Contact
-                </a>
+                <div @click="scrollTo('home')" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300">Home</div>
+<!--                <AppLink class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300" :to="'../views/Gabinety'">Click Me</AppLink>-->
+                <div @click="scrollTo('about')" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> About
+                </div>
+                <div @click="scrollTo('portfolio')" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Portfolio
+                </div>
+                <div @click="$emit('scroll-to', 'blogs')" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Blogs
+                </div>
+                <div @click="$emit('scroll-to', 'contact')" class="block text-white transition-colors duration-300 md:px-6 hover:text-indigo-300"> Contact
+                </div>
             </div>
         </nav>
     </header>
@@ -47,4 +47,10 @@ import { ref } from 'vue';
 import AppLink from './Applink.vue'
 
 let open = ref(false);
+function scrollTo(refName) {
+    this.$emit('scroll-to', refName);
+}
+
+
 </script>
+

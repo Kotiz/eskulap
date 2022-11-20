@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Gabinet1 from '../views/Gabinet1.vue';
+import Gabinet1 from '../components/cabinets/cabinet1.vue';
 // import NavMenuVue from './components/NavMenu.vue';
 // import AboutMoreComponent from './components/AboutMoreComponent.vue'
 // import SquareComponents from './components/SquareComponents.vue'
@@ -43,5 +43,5 @@ const routes = [
     history: createWebHistory(),
     routes
   })
-  
+
   export default router
